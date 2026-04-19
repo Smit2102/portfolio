@@ -1,20 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Intro Loader ---
-    const introLoader = document.getElementById('intro-loader');
-    if (introLoader) {
-        // Slide up after 2.2 seconds (giving just enough time to read)
-        setTimeout(() => {
-            introLoader.classList.add('slide-up');
-            document.body.classList.remove('loading');
-        }, 2200); 
-        
-        // Remove from DOM completely to clean up
-        setTimeout(() => {
-            introLoader.remove();
-        }, 3000);
-    }
-
     // --- Smooth Scrolling for Navigation Links ---
     const navLinks = document.querySelectorAll('.nav-links a');
     

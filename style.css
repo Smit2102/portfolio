@@ -129,72 +129,6 @@ body {
     border-color: var(--accent);
 }
 
-/* ==========================================================================
-   Intro Loader
-   ========================================================================== */
-body.loading {
-    overflow: hidden;
-}
-
-.intro-loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: var(--bg-dark);
-    z-index: 99999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-.intro-loader.slide-up {
-    transform: translateY(-100vh);
-}
-
-.loader-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.robot-icon {
-    font-size: 3.5rem;
-    margin-bottom: 25px;
-    color: var(--text-light);
-    animation: bounce 1s infinite alternate;
-}
-
-@keyframes bounce {
-    from { transform: translateY(0px); text-shadow: 0 5px 15px rgba(0, 229, 255, 0.4); }
-    to { transform: translateY(-15px); text-shadow: 0 25px 30px rgba(0, 229, 255, 0.2); }
-}
-
-.loader-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.loader-text p {
-    font-family: var(--font-mono);
-    color: var(--accent);
-    font-size: 1.1rem;
-    margin: 5px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 0;
-}
-
-.type-line-1 { animation: typing1 0.4s steps(27, end) forwards; animation-delay: 0.2s; }
-.type-line-2 { animation: typing2 0.6s steps(42, end) forwards; animation-delay: 0.7s; }
-.type-line-3 { animation: typing3 0.3s steps(17, end) forwards; animation-delay: 1.5s; color: var(--accent-secondary); font-weight: bold; text-shadow: 0 0 10px rgba(123, 44, 191, 0.6); }
-
-@keyframes typing1 { from { width: 0; } to { width: 28ch; } }
-@keyframes typing2 { from { width: 0; } to { width: 44ch; } }
-@keyframes typing3 { from { width: 0; } to { width: 18ch; } }
 
 /* ==========================================================================
    Typography & Common Elements
@@ -511,44 +445,33 @@ main {
 
 .social-links a:hover { color: var(--accent); transform: translateY(-5px); }
 
-/* Glass Terminal */
-.hero-visual { flex: 0.9; perspective: 1000px; }
+/* Hero About Card (replaces glass terminal) */
+.hero-visual { flex: 0.9; }
 
-.glass-terminal {
-    background: rgba(10, 15, 30, 0.6);
-    backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px; overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
+.hero-about-card {
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    border-radius: var(--border-radius);
 }
 
-.terminal-header {
-    background: rgba(0,0,0,0.3); padding: 15px 20px;
-    display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05);
+.hero-about-card .about-photo {
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
 }
 
-.mac-btns { display: flex; gap: 8px; }
-.mac-btns span { width: 12px; height: 12px; border-radius: 50%; }
-.mac-btns span:nth-child(1) { background: #ff5f56; }
-.mac-btns span:nth-child(2) { background: #ffbd2e; }
-.mac-btns span:nth-child(3) { background: #27c93f; }
-
-.terminal-title {
-    flex: 1; text-align: center; font-family: var(--font-mono);
-    font-size: 0.8rem; color: var(--text-muted); padding-right: 44px;
-}
-
-.terminal-body {
-    padding: 30px; font-family: var(--font-mono); font-size: 0.9rem;
+.hero-about-card .about-text p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
     line-height: 1.7;
 }
 
-.keyword { color: #c678dd; }
-.class-name { color: #e5c07b; }
-.string { color: #98c379; }
-.text-muted { color: #5c6370; }
-.indent { display: inline-block; margin-left: 20px; }
-.indent-2 { display: inline-block; margin-left: 40px; }
-.highlight-glow { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
+.hero-about-card .about-text p:last-child {
+    margin-bottom: 0;
+}
 
 /* ==========================================================================
    Dynamic Metrics
@@ -916,8 +839,7 @@ footer { padding: 40px; text-align: center; border-radius: 0; border-bottom: non
     .bento-grid { grid-template-columns: repeat(2, 1fr); }
     .skills-grid { grid-template-columns: repeat(2, 1fr); }
     .metrics-section { padding-top: 50px; }
-    .about-layout { flex-direction: column; align-items: center; }
-    .about-photo { width: 220px; height: 220px; }
+    .hero-about-card { flex-direction: column; align-items: center; text-align: center; }
 }
 
 @media (max-width: 640px) {
@@ -933,6 +855,5 @@ footer { padding: 40px; text-align: center; border-radius: 0; border-bottom: non
     .nav-links { display: none; }
     .cursor-dot, .cursor-outline { display: none; }
     * { cursor: auto !important; }
-    .about-layout { flex-direction: column; align-items: center; text-align: center; }
-    .about-photo { width: 200px; height: 200px; }
+    .hero-about-card .about-photo { width: 140px; height: 140px; }
 }
